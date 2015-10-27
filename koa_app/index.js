@@ -28,6 +28,23 @@ router.post('/api/users', function * () {
     this.body = user;
 });
 
+router.patch('/api/users/:name', function * () {
+  var user = JSON.parse(this.request.body);
+  var i, length = users.length;
+          for(i = 0; i< length; i++){
+            if(users[i].name === this.params.name){
+              users[i]= user;
+              break;
+            }
+          }
+    if(i < length){
+        this.body = user;
+    }else{
+      this.body = null;
+      this.status = 404;
+    }
+
+});
 router.delete('/api/users/:name', function * () {
   var i, length = users.length;
           for(i = 0; i< length; i++){
