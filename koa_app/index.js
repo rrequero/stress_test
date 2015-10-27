@@ -23,8 +23,9 @@ router.get('/api/users', function * () {
 });
 
 router.post('/api/users', function * () {
-    users.push(this.request.body);
-    this.body = this.request.body;
+  var user = JSON.parse(this.request.body);
+    users.push(user);
+    this.body = user;
 });
 app.use(router.middleware());
 app.listen(3000);
