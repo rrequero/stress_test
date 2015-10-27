@@ -1,10 +1,10 @@
 var koa = require('koa');
 var bodyParser = require('koa-body-parser');
-
+var cors = require('koa-cors');
 var Router = require('koa-router');
 
 var app = koa();
-
+app.use(cors());
 app.use(bodyParser());
 
 var users = [{
