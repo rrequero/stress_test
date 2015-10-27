@@ -27,5 +27,16 @@ router.post('/api/users', function * () {
     users.push(user);
     this.body = user;
 });
+
+router.delete('/api/users/:name', function * () {
+  var i, length = users.length;
+          for(i = 0; i< length; i++){
+            if(users[i].name === this.params.name){
+              users.splice(i, 1);
+              break;
+            }
+          }
+    this.body = users;
+});
 app.use(router.middleware());
 app.listen(3000);
